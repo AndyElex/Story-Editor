@@ -1,0 +1,9 @@
+﻿{
+    "id" :  23,
+    "charId": 0,
+    "poseId": 0,
+    "text": [
+      "Did you find something {0}?...",
+      "Is there something buried there!?"
+    ]
+  }

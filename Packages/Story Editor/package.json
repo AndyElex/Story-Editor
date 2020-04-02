@@ -1,0 +1,19 @@
+{
+  "name": "com.andrewgordon.storyeditor",
+  "version": "0.0.1",
+  "displayName": "Story Editor",
+  "description": "A Package for Editing Custom Story Arcs for BlastUp",
+  "unity": "2019.3",
+  "unityRelease": "7f1",
+  "dependencies": {
+ },
+ "keywords": [
+    "Narrative",
+    "Editor",
+    "Story"
+  ],
+  "author": {
+    "name": "Andy",
+    "email": "andrew@elex-tech.com"
+  }
+}

@@ -1,0 +1,24 @@
+﻿ {
+    "id": 1,
+    "title": "Prepare for the Journey",
+    "bGImagePath": ".../res/common/assets/bgImages/chapter1/chapter1.png",
+    "rewardId": 0,
+    "quests": [
+      {
+        "taskId":  1,
+        "storyFragmentId": 1
+      },
+      {
+        "taskId":  2,
+        "storyFragmentId": 2
+      },
+      {
+        "taskId":  3,
+        "storyFragmentId": 3
+      },
+      {
+        "taskId":  4,
+        "storyFragmentId": 4
+      }
+    ]
+  }

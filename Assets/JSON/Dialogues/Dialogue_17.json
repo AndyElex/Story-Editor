@@ -1,0 +1,10 @@
+﻿ {
+    "id" :  17,
+    "charId": 0,
+    "poseId": 0,
+    "text": [
+      "What did you find there {0}?...",
+      "Oh!...",
+      "It's one of Dad's Hammers."
+    ]
+  }

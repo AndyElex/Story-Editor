@@ -1,0 +1,5 @@
+﻿  {
+    "id": 1,
+    "imagePath": ".../res/common/assets/bgImages/chapter1/wakeUpDog.png",
+    "dialogueIds": [1,2,3,4,5,6]
+  }

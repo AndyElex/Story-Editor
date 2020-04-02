@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Administrator\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Administrator\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Story Editor.-343070237.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Administrator\Documents\GitHub\Story Editor" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="ColorfulButtons" t="Include">
+          <e p="Credits.txt" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Chapter.cs" t="Include" />
+          <e p="Dialogue.cs" t="Include" />
+          <e p="EChapter.cs" t="Include" />
+          <e p="EDialogue.cs" t="Include" />
+          <e p="EFragment.cs" t="Include" />
+          <e p="ETask.cs" t="Include" />
+          <e p="Fragment.cs" t="Include" />
+          <e p="NarrativeDirector.cs" t="Include" />
+          <e p="Quest.cs" t="Include" />
+          <e p="StoryEditor.cs" t="Include" />
+          <e p="Task.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Story Editor.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

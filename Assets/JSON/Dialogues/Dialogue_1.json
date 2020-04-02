@@ -1,0 +1,8 @@
+﻿  {
+    "id" :  1,
+    "charId": 0,
+    "poseId": 0,
+    "text": [
+      "Hey, {0}.. Wake up!"
+    ]
+  }

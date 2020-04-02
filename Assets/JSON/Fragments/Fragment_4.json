@@ -1,0 +1,5 @@
+﻿  {
+    "id": 4,
+    "imagePath": ".../res/common/assets/bgImages/chapter1/hungryAdventurers.png",
+    "dialogueIds": [13,14,15]
+  }

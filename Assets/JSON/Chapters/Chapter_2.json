@@ -1,0 +1,25 @@
+﻿ {
+    "id": 2,
+    "title": "Small Steps",
+    "bGImagePath": ".../res/common/assets/bgImages/chapter2/chapter2.png",
+    "rewardId": 0,
+    "quests": [
+      {
+        "taskId":  5,
+        "storyFragmentId": 5
+      },
+      {
+        "taskId":  6,
+        "storyFragmentId": 6
+      },
+      {
+        "taskId":  7,
+        "storyFragmentId": 7
+      },
+      {
+        "taskId":  8,
+        "storyFragmentId": 8
+      }
+    ]
+  }
+

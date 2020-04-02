@@ -1,0 +1,5 @@
+﻿  {
+    "id": 3,
+    "imagePath": ".../res/common/assets/bgImages/chapter1/rocketScience.png",
+    "dialogueIds": [10,11,12]
+  }

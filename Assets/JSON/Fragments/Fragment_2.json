@@ -1,0 +1,5 @@
+﻿  {
+    "id": 2,
+    "imagePath": ".../res/common/assets/bgImages/chapter1/bombSquad.png",
+    "dialogueIds": [7,8,9]
+  }
