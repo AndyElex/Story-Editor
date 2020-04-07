@@ -24,11 +24,22 @@ public class NarrativeDirector : MonoBehaviour
    public GameObject playButton;
    public GameObject mainMenuPanel;
    public GameObject chapterSelectBox;
+   public GameObject taskCompletePanel;
+   public GameObject chapterCompletePanel;
 
    public EChapter currentChapter;
    public ETask currentTask;
    public EFragment currentFragment;
    public EDialogue currentDialogue;
+   public Dictionary<int,int> sceneChars = new Dictionary<int, int>();
+   public int taskOrdinal;
+   public int fragmentOrdinal;
+   public int dialogueOrdinal;
+   public int textOrdinal;
+   public Text leftName;
+   public Text leftDialogue;
+   public Text rightName;
+   public Text rightDialogue;
    
    private List<Chapter> _chapters = new List<Chapter>();
    private List<Task> _tasks = new List<Task>();
@@ -38,13 +49,22 @@ public class NarrativeDirector : MonoBehaviour
    public Dictionary<int, EFragment> fragmentList = new Dictionary<int, EFragment>();
    public Dictionary<int, EDialogue> dialogueList = new Dictionary<int, EDialogue>();
    public Dictionary<int,ETask> taskList = new Dictionary<int, ETask>();
+   public string[] charNames;
 
+   private bool _playModeActive;
+   private bool _doOnce;
+   
    private void Awake()
    {
       Init();
+      
+      leftName = char1NameText.GetComponent<Text>();
+      leftDialogue = char1DialogueText.GetComponent<Text>();
+      
+      rightName = char2NameText.GetComponent<Text>();
+      rightDialogue = char2DialogueText.GetComponent<Text>();
+      
    }
-   
-   
 
    private void Init()
    {
@@ -243,22 +263,114 @@ public class NarrativeDirector : MonoBehaviour
       return dialogueArray;
    }
 
+   public void NextButtonAction()
+   {
+      textOrdinal++;
+      
+      if (textOrdinal < currentDialogue.text.Length)
+      {
+         DisplayText(sceneChars[currentDialogue.charId]);
+      }
+      else
+      {
+         textOrdinal = 0;
+         dialogueOrdinal++;
+
+         if (dialogueOrdinal < currentFragment.dialogues.Length)
+         {
+            currentDialogue = currentFragment.dialogues[dialogueOrdinal];
+            DisplayText(sceneChars[currentDialogue.charId]);
+         }
+         else
+         {
+            textOrdinal = 0;
+            dialogueOrdinal = 0;
+            taskOrdinal++;
+            fragmentOrdinal++;
+
+            if (taskOrdinal < currentChapter.questDict.Count)
+            {
+               currentTask = taskList[currentChapter.questDict.Keys.ToArray()[taskOrdinal]];
+               currentFragment = fragmentList[currentChapter.questDict[currentChapter.questDict.Keys.ToArray()[fragmentOrdinal]]];
+               currentDialogue = currentFragment.dialogues[dialogueOrdinal];
+               SetSceneCharacters();
+               DisplayText(sceneChars[currentDialogue.charId]);
+               
+               taskCompletePanel.SetActive(true);
+            }
+            else
+            {
+               chapterCompletePanel.SetActive(true);
+            }
+            
+         }
+      }
+      
+   }
+
+   private void DisplayText(int side)
+   {
+      leftDialogue.text = string.Empty;
+      rightDialogue.text = string.Empty;
+      
+      if (side > 0)
+      {
+         leftDialogue.text = currentFragment.dialogues[dialogueOrdinal].text[textOrdinal];
+      }
+      else
+      {
+         rightDialogue.text = currentFragment.dialogues[dialogueOrdinal].text[textOrdinal];
+      }
+   }
+
    public void PlayButtonAction()
    {
       var dropBox = chapterSelectBox.GetComponent<Dropdown>();
       var chapterId = Convert.ToInt32(dropBox.options[dropBox.value].text);
       PlayChapter(chapterList[chapterId]);
+      _playModeActive = true;
    }
    
    public void PlayChapter(EChapter chapter)
    {
+      taskOrdinal = 0;
+      dialogueOrdinal = 0;
+      fragmentOrdinal = 0;
+      textOrdinal = 0;
       currentChapter = chapter;
-      currentTask = taskList[chapter.questDict.Keys.First()];
-      currentFragment = fragmentList[chapter.questDict[chapter.questDict.Keys.First()]];
-      currentDialogue = currentFragment.dialogues[0];
+      currentTask = taskList[chapter.questDict.Keys.ToArray()[taskOrdinal]];
+      currentFragment = fragmentList[chapter.questDict[chapter.questDict.Keys.ToArray()[fragmentOrdinal]]];
+      currentDialogue = currentFragment.dialogues[dialogueOrdinal];
+      
       
       mainMenuPanel.SetActive(false);
       playHUD.SetActive(true);
       storyboard.SetActive(true);
+      
+      SetSceneCharacters();
+
+   }
+
+   private void SetSceneCharacters()
+   {
+      sceneChars.Clear();
+
+      var flipper = 1;
+
+      foreach (var dialogue in currentFragment.dialogues)
+      {
+         if (!sceneChars.ContainsKey(dialogue.charId))
+         {
+            sceneChars.Add(dialogue.charId, flipper);
+            flipper *= -1;
+         }
+      }
+
+      leftName.text = charNames[sceneChars.Keys.ToArray()[0]];
+      leftDialogue.text = currentFragment.dialogues[dialogueOrdinal].text[textOrdinal];
+
+      rightName.text = charNames[sceneChars.Keys.ToArray()[1]];
+
+      backButton.GetComponent<Button>().interactable = false;
    }
 }
